@@ -28,22 +28,13 @@
 
     public string GetDivision()
     {
-        switch (GetPercentage())
-        {
-            case decimal d when (d >= 70):
-                return "First";
-                break;
-            case decimal d when (d >= 60):
-                return "Second, Upper";
-                break;
-            case decimal d when (d >= 50):
-                return "Second, Lower";
-                break;
-            default:
-                return "Third";
-                break;
-
-        }
+        string s = GetPercentage() switch {
+            >= 70 => "First",
+            >= 60 => "Second, Upper",
+            >= 50 => "Second, Lower",
+                _ => "Third"
+        };
+        return s;
     }
 }
 
